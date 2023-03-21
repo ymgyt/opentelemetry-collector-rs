@@ -1,0 +1,4 @@
+extend = [{ path = "dev/makefiles/format_makefile.toml" }]
+
+[config]
+default_to_workspace = false

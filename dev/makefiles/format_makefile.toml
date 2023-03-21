@@ -1,0 +1,10 @@
+[tasks.fmt]
+dependencies = ["fmt:toml", "fmt:cargotoml"]
+
+[tasks."fmt:toml"]
+command = "taplo"
+args = ["fmt", "**/*.toml"]
+
+[tasks."fmt:cargotoml"]
+command = "cargo"
+args = ["sort"]
