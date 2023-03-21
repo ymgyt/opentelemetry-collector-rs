@@ -64,6 +64,10 @@ name = "component"
 version = "0.1.0"
 
 [[package]]
+name = "config"
+version = "0.1.0"
+
+[[package]]
 name = "gimli"
 version = "0.27.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -141,11 +145,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b7e5500299e16ebb147ae15a00a942af264cf3688f47923b8fc2cd5858f23ad3"
 
 [[package]]
-name = "opentelemetry-collector-rs"
+name = "otelcol"
+version = "0.1.0"
+dependencies = [
+ "component",
+ "receiver",
+]
+
+[[package]]
+name = "otelcorecol"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "component",
+ "otelcol",
  "receiver",
  "tokio",
  "tracing",

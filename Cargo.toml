@@ -1,38 +1,30 @@
-[package]
-name = "opentelemetry-collector-rs"
-version = "0.1.0"
-edition = "2021"
-default-run = "otelcorecol"
+# [package]# name = "opentelemetry-collector-rs"# version = "0.1.0"# edition = "2021"
+# default-run = "otelcorecol"
 
-[dependencies]
+# # ====
+
+# component = { path = "./component" }
+# receiver = { path = "./receiver" }
+
+# [[bin]]
+# name = "otelcorecol"
+# path = "src/cmd/otelcorecol/main.rs"
+
+[workspace]
+
+members = ["component", "config", "otelcol", "otelcorecol", "receiver"]
+
+[workspace.dependencies]
 anyhow = { version = "1.0.70", default-features = false, features = [
   "std",
   "backtrace",
 ] }
-tokio = { version = "1.26.0", default-features = false, features = [
-  "rt-multi-thread",
-  "macros",
-] }
+tokio = { version = "1.26.0", default-features = false }
 tracing = { version = "0.1.37", default-features = false, features = [
   "std",
   "attributes",
 ] }
-tracing-subscriber = { version = "0.3.16", default-features = false, features = [
-  "smallvec",
-  "fmt",
-  "ansi",
-  "std",
-] }
-
-# ====
 
 component = { path = "./component" }
 receiver = { path = "./receiver" }
-
-[[bin]]
-name = "otelcorecol"
-path = "src/cmd/otelcorecol/main.rs"
-
-[workspace]
-
-members = ["component", "receiver"]
+otelcol = { path = "./otelcol" }

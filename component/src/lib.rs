@@ -2,4 +2,4 @@ mod component;
 mod config;
 
 pub use component::Factory;
-pub use config::Type;
+pub use config::{Config, Type};

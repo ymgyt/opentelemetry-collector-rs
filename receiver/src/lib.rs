@@ -1,3 +1,4 @@
 mod receiver;
+pub use receiver::{new_factory, Factory};
 
-pub use receiver::Factory;
+pub mod otlpreceiver;
