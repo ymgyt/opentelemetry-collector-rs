@@ -1,4 +1,3 @@
-/// Factory is factory trait for receivers.
 pub trait Factory: component::Factory {}
 
 pub fn new_factory(
@@ -15,9 +14,23 @@ pub fn new_factory(
         logs_stability_level: Default::default(),
     };
 
-    options.into_iter().for_each(|o| o.apply_option(&mut f));
-
+    options
+        .into_iter()
+        .for_each(|o| o.apply_exporter_factory_option(&mut f));
     f
+}
+
+pub trait FactoryOption {
+    fn apply_exporter_factory_option(&self, o: &mut FactoryImpl);
+}
+
+impl<F> FactoryOption for F
+where
+    F: Fn(&mut FactoryImpl),
+{
+    fn apply_exporter_factory_option(&self, o: &mut FactoryImpl) {
+        self(o);
+    }
 }
 
 pub fn with_traces(sl: component::StabilityLevel) -> impl FactoryOption {
@@ -35,19 +48,6 @@ pub fn with_metrics(sl: component::StabilityLevel) -> impl FactoryOption {
 pub fn with_logs(sl: component::StabilityLevel) -> impl FactoryOption {
     move |o: &mut FactoryImpl| {
         o.logs_stability_level = sl;
-    }
-}
-
-pub trait FactoryOption {
-    fn apply_option(&self, o: &mut FactoryImpl);
-}
-
-impl<F> FactoryOption for F
-where
-    F: Fn(&mut FactoryImpl),
-{
-    fn apply_option(&self, o: &mut FactoryImpl) {
-        self(o);
     }
 }
 

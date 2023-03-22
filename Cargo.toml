@@ -12,7 +12,7 @@
 
 [workspace]
 
-members = ["component", "config", "otelcol", "otelcorecol", "receiver"]
+members = ["component", "config", "otelcol", "otelcorecol", "receiver", "exporter"]
 
 [workspace.dependencies]
 anyhow = { version = "1.0.70", default-features = false, features = [
@@ -28,3 +28,4 @@ tracing = { version = "0.1.37", default-features = false, features = [
 component = { path = "./component" }
 receiver = { path = "./receiver" }
 otelcol = { path = "./otelcol" }
+exporter = { path = "./exporter"}

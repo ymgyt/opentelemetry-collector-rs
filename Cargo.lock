@@ -68,6 +68,13 @@ name = "config"
 version = "0.1.0"
 
 [[package]]
+name = "exporter"
+version = "0.1.0"
+dependencies = [
+ "component",
+]
+
+[[package]]
 name = "gimli"
 version = "0.27.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -149,6 +156,7 @@ name = "otelcol"
 version = "0.1.0"
 dependencies = [
  "component",
+ "exporter",
  "receiver",
 ]
 
@@ -157,6 +165,8 @@ name = "otelcorecol"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "component",
+ "exporter",
  "otelcol",
  "receiver",
  "tokio",

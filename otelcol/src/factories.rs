@@ -5,4 +5,6 @@ use std::collections::HashMap;
 #[derive(Default)]
 pub struct Factories {
     pub receivers: HashMap<component::Type, Box<dyn receiver::Factory>>,
+
+    pub exporters: HashMap<component::Type, Box<dyn exporter::Factory>>,
 }
