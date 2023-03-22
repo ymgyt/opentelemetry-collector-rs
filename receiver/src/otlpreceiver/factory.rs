@@ -1,4 +1,6 @@
+use crate::otlpreceiver::{Config, Protocols};
 use crate::receiver;
+use ::config::{configgrpc::GrpcServerSettings, confignet};
 
 const TYPE_STR: component::Type = component::Type("otlp");
 
@@ -15,5 +17,14 @@ pub fn new_factory() -> impl receiver::Factory {
 }
 
 fn create_default_config() -> component::Config {
-    todo!()
+    component::Config(Box::new(Config {
+        protocols: Protocols {
+            grpc: Some(GrpcServerSettings {
+                net_addr: confignet::NetAddr {
+                    endpoint: "xxx".into(),
+                    transport: "tcp".into(),
+                },
+            }),
+        },
+    }))
 }

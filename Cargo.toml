@@ -19,6 +19,7 @@ anyhow = { version = "1.0.70", default-features = false, features = [
   "std",
   "backtrace",
 ] }
+serde = { version = "1.0", default-features = false ,features = ["std", "derive"]}
 tokio = { version = "1.26.0", default-features = false }
 tracing = { version = "0.1.37", default-features = false, features = [
   "std",
@@ -29,3 +30,4 @@ component = { path = "./component" }
 receiver = { path = "./receiver" }
 otelcol = { path = "./otelcol" }
 exporter = { path = "./exporter"}
+config = { path = "./config" }

@@ -51,7 +51,7 @@ where
     }
 }
 
-struct FactoryImpl {
+pub struct FactoryImpl {
     cfg_type: component::Type,
     create_default_config: Box<dyn Fn() -> component::Config>,
 
@@ -66,7 +66,7 @@ impl component::Factory for FactoryImpl {
     }
 
     fn create_default_config(&self) -> component::Config {
-        self.create_default_config()
+        (self.create_default_config)()
     }
 }
 

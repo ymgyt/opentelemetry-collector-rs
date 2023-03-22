@@ -26,5 +26,5 @@ pub(super) fn components() -> anyhow::Result<Factories> {
         })
         .collect();
 
-    todo!()
+    Ok(factories)
 }
